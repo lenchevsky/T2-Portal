@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'pos_tools_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 't2_portal',
-        'USER': 't2_portaluser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'travis_ci_db',
+        'USER': 'travis',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
         'PORT': '',
     }
 }
