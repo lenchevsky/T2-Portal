@@ -27,7 +27,7 @@ before_script:
   - mysql -e 'create database t2_portal;'
 
 script:
-  - python pos-tools-portal/manage.py makemigrations --noinput    # Fetch DB changes
-  - python pos-tools-portal/manage.py migrate                     # Apply database migrations
-  - python pos-tools-portal/manage.py collectstatic --noinput     # Collect static files
-  - python pos-tools-portal/manage.py check
+  - python pos_tools_portal/manage.py makemigrations --noinput    # Fetch DB changes
+  - python pos_tools_portal/manage.py migrate                     # Apply database migrations
+  - python pos_tools_portal/manage.py collectstatic --noinput     # Collect static files
+  - python pos_tools_portal/manage.py check
