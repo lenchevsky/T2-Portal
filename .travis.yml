@@ -15,7 +15,7 @@ env:
   - DJANGO=1.10.8
 
 before_install:
-  - export DJANGO_SETTINGS_MODULE=pos-tools-portal.settings
+  - export DJANGO_SETTINGS_MODULE=pos_tools_portal.settings
   - export PYTHONPATH=$HOME/builds/lenchevsky/t2-portal
   - export PIP_USE_MIRRORS=true
 
