@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_messages %}
+
+{% block content %}
+    <div class="container"></div>
+
+{% if task %}
+<form action = "result/"  method = "POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form%}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary" {{ task.active|yesno:",disabled" }}>
+        {% bootstrap_icon "play" %} Execute
+      </button>
+    {% endbuttons %}
+  </form>
+    
+{% else %}
+    <p>No task selected.</p>
+{% endif %}
+{% endblock %}

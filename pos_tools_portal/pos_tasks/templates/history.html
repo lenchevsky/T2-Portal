@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_messages %}
+
+{% block content %}
+    <div class="container"></div>
+
+{% if result_record %}
+
+
+
+<ul class="list-group">
+        <li class="list-group-item list-group-item-info"><b>Task name:</b> {{result_record.task.name}}</li>
+        <li class="list-group-item list-group-item-{{ result_record.is_successful|yesno:"success,danger,warning" }}"><b>Task status:</b>   {% bootstrap_icon result_record.is_successful|yesno:"ok-sign,remove-sign,question-sign" %}</li>
+        <li class="list-group-item list-group-item-info"><b>Date:</b> {{result_record.date}}</li>
+        <li class="list-group-item list-group-item-info"><b>Initiated by:</b> {{result_record.user_signature}}</li>
+      </ul>
+    
+      <div class="panel panel-{{ result_record.is_successful|yesno:"success,danger,warning"}}">
+            <div class="panel-heading"><b>Jenkins console output:</b></div>
+            <div class="panel-body">
+                {{result_record.output}}
+            </div>
+     </div>
+
+{% else %}
+    <p>No results available.</p>
+{% endif %}
+{% endblock %}

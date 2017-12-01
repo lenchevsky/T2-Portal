@@ -1,0 +1,11 @@
+# @Project: 		Tier 2 Support Task Automation Portal
+# @Version: 		0.1
+# @Author:  		Oleg Snegirev <ol.snegirev@gmail.com>
+# @Functionality:	Required python libraries 
+
+django
+django-bootstrap3
+django-auth-ldap
+mysqlclient
+requests
+python-jenkins
