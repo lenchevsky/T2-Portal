@@ -1,0 +1,33 @@
+# @Project:       Tier 2 Support Task Automation Portal
+# @Version:       0.1
+# @Author:        Oleg Snegirev <ol.snegirev@gmail.com>
+# @Functionality: A basic travis.yml boilerplate for T2 Portal projects
+
+language: python
+
+python:
+  - 2.7
+
+services: 
+  - mysql
+
+env:
+  - DJANGO=1.10.8
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=pos-tools-portal.settings
+  - export PYTHONPATH=$HOME/builds/lenchevsky/t2-portal
+  - export PIP_USE_MIRRORS=true
+
+install:
+  - pip install -r ./tools/requirements.txt
+  - pip install django==$DJANGO --quiet
+
+before_script:
+  - mysql -e 'create database t2_portal;'
+
+script:
+  - python pos-tools-portal/manage.py makemigrations --noinput    # Fetch DB changes
+  - python pos-tools-portal/manage.py migrate                     # Apply database migrations
+  - python pos-tools-portal/manage.py collectstatic --noinput     # Collect static files
+  - python pos-tools-portal/manage.py check
