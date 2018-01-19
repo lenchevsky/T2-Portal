@@ -6,11 +6,11 @@ from .models import Task
 from .models import RESTTask
 from .models import Parameter
 from .models import Header
-from .models import Project
+from .models import Environment
 
 # Register your models here.
 admin.site.register(Task)
 admin.site.register(RESTTask)
 admin.site.register(Parameter)
 admin.site.register(Header)
-admin.site.register(Project)
+admin.site.register(Environment)

@@ -9,3 +9,5 @@ django-auth-ldap
 mysqlclient
 requests
 python-jenkins
+python-simple-hipchat-v2
+django_admin_bootstrapped

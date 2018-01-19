@@ -3,7 +3,7 @@
 {% bootstrap_messages %}
 
 {% block content %}
-    <div class="container"></div>
+    <div class="container" style="margin-top:45px;"></div>
 
 {% if result_record %}
 
@@ -13,16 +13,18 @@
         <li class="list-group-item list-group-item-info"><b>Task name:</b> {{result_record.task.name}}</li>
         <li class="list-group-item list-group-item-{{ result_record.is_successful|yesno:"success,danger,warning" }}"><b>Task status:</b>   {% bootstrap_icon result_record.is_successful|yesno:"ok-sign,remove-sign,question-sign" %}</li>
         <li class="list-group-item list-group-item-info"><b>Date:</b> {{result_record.date}}</li>
+        <li class="list-group-item list-group-item-info"><b>ServiceNow Ticket:</b> {{result_record.snow_number}}</li>
         <li class="list-group-item list-group-item-info"><b>Initiated by:</b> {{result_record.user_signature}}</li>
       </ul>
     
       <div class="panel panel-{{ result_record.is_successful|yesno:"success,danger,warning"}}">
-            <div class="panel-heading"><b>Jenkins console output:</b></div>
+            <div class="panel-heading"><b>Console output:</b></div>
             <div class="panel-body">
-                {{result_record.output}}
+                <pre><code>{{result_record.output}}</code></pre>
             </div>
-     </div>
+      </div>
 
+     <p align = center><a href="{{ request.META.HTTP_HOST }}/history/{{result_record.get_previous}}/">Previous result</p>
 {% else %}
     <p>No results available.</p>
 {% endif %}

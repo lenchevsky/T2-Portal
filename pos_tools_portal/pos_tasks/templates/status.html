@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+    <div class="container">
+
+{% if result_records.all %}
+    <table class="table table-hover">
+    <th>Status</th><th>Task Name</th><th>Initiated By</th><th>ServiceNow Ticket</th><th>Fired At</th>
+    {% for result in result_records.all %}
+        <tr {% if not result.is_successful %} class="danger" {% endif  %} >
+            <td>{% bootstrap_icon result.is_successful|yesno:"ok-sign,remove-sign" %}</td>
+            <td>{{ result.task.name }}</td>
+            <td>{{ result.user_signature }}</td>
+            <td>{{ result.snow_number }}</td>
+            <td><a href="/history/{{result.id}}">{{ result.date }}</a></td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% else %}
+    <p>No results available.</p>
+{% endif %}
+{% endblock %}

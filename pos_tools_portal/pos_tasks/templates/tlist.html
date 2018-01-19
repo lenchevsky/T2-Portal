@@ -7,11 +7,11 @@
 
 {% if task_list.all %}
     <table class="table table-hover">
-    <th>{% bootstrap_icon "off" %} </th><th>Project</th><th>Task Name</th><th>Description</th><th>Last fired</th><th></th>
+    <th>{% bootstrap_icon "off" %} </th><th>Environment</th><th>Task Name</th><th>Description</th><th>Last fired</th><th></th>
     {% for tsk in task_list.all %}
         <tr class="">
             <td>{% bootstrap_icon tsk.active|yesno:"check,unchecked" %}</td>
-            <td>{{ tsk.project.name }}</td>
+            <td>{{ tsk.environment.name }}</td>
             <td><a href="/tsk/{{ tsk.id }}">{{ tsk.name }}</a></td>
             <td>{{ tsk.description }}</td>
             <td><a href="/history/{{tsk.executionresult_set.last.id}}">{{ tsk.executionresult_set.last.date }}</a></td>
@@ -21,7 +21,7 @@
     {% for rtsk in rtask_list.all %}
     <tr class="">
         <td>{% bootstrap_icon rtsk.active|yesno:"check,unchecked" %}</td>
-        <td>{{ rtsk.project.name }}</td>
+        <td>{{ rtsk.environment.name }}</td>
         <td><a href="/rtsk/{{ rtsk.id }}">{{ rtsk.name }}</a></td>
         <td>{{ rtsk.description }}</td>
         <td><a href="/history/{{rtsk.executionresult_set.last.id}}">{{ rtsk.executionresult_set.last.date }}</a></td>

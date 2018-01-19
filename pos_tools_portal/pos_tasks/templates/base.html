@@ -10,36 +10,39 @@
 <body>
 <div class="container">
 <nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">
-      <span><img src="http://www.greatwhitenorth.com/wp-content/uploads/IMG04_HelpdeskIcon.png" width="35" class="d-inline-block align-top" alt=""></span>
-      Tier 2 Support Task Automation Portal
+  <a class="navbar-brand" href="/">
+    <span><img src="http://www.greatwhitenorth.com/wp-content/uploads/IMG04_HelpdeskIcon.png" width="35" class="d-inline-block align-top" alt=""></span>
+    Tier 2 Support Task Automation Portal
     </a>
   <ul class="nav nav-pills pull-right">
       {% if env_list %}
         <li class="nav-item dropdown">
 
-            <a data-target="#" data-toggle="dropdown" class="dropdown-toggle" href="#"> {% bootstrap_icon "retweet" %} Switch Environment
+            <a data-target="#" data-toggle="dropdown" class="dropdown-toggle" href="{{ default_env.url }}"> {% bootstrap_icon "retweet" %}  Project: {{ default_env.name }}
             <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     {% for item in env_list %}
-                        <li><a href="#">{{ item.name }}</a></li>
+                        <li><a href="{{ item.url }}">{{ item.name }}</a></li>
                     {% endfor %}
                  </ul>
           </li>
       {% endif %}
 
     <li class="nav-item">
+        <a class="nav-link" href="/status/{% now "Y-m-d" %}/">{% bootstrap_icon "scale" %} Status</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="/admin/">{% bootstrap_icon "cog" %} Settings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/admin/logout/">{% bootstrap_icon "off" %} Log out</a>
+      <a class="nav-link" href="/logout/">{% bootstrap_icon "off" %} Log out</a>
     </li>
   </ul>
 </nav>
 </div>
 <div class="container">
-    {% if message is not None %}
+    {% if message %}
       {% bootstrap_alert message alert_type='danger' %}
     {% endif %}
 

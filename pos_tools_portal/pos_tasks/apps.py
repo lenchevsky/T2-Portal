@@ -6,3 +6,4 @@ from django.apps import AppConfig
 
 class PosTasksConfig(AppConfig):
     name = 'pos_tasks'
+    verbose_name = "T2-Portal: Tasks, Parameters and Environments"
