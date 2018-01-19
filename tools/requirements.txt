@@ -3,7 +3,7 @@
 # @Author:  		Oleg Snegirev <ol.snegirev@gmail.com>
 # @Functionality:	Required python libraries 
 
-#django
+django <= 1.8.18
 django-bootstrap3
 django-auth-ldap
 mysqlclient
