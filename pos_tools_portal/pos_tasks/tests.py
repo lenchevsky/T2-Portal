@@ -24,14 +24,14 @@ class LoginTestCase(LiveServerTestCase):
         username = selenium.find_element_by_id('id_username')
         password = selenium.find_element_by_id('id_password')
 
-        submit = selenium.find_element_by_xpath('id("login-form")/input[2]')
+        login_btn = selenium.find_element_by_xpath('//input[2]')
 
         #Fill the form with data
         username.send_keys('test')
         password.send_keys('test')
 
         #submitting the form
-        submit.send_keys(Keys.RETURN)
+        login_btn.click()
 
         #check the returned result
         assert 'Please enter a correct username and password' in selenium.page_source
