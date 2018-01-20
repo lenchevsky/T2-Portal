@@ -34,4 +34,4 @@ class LoginTestCase(LiveServerTestCase):
         submit.send_keys(Keys.RETURN)
 
         #check the returned result
-        assert 'Please enter a correct username and password.' in selenium.page_source
+        assert 'Username' in selenium.page_source
