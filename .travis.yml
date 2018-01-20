@@ -22,6 +22,10 @@ before_install:
   - export DJANGO_SETTINGS_MODULE=pos_tools_portal.settings
   - export PYTHONPATH=$HOME/builds/lenchevsky/t2-portal
   - export PIP_USE_MIRRORS=true
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver*.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
 
 install:
   - pip install -r ./tools/requirements.txt
