@@ -34,9 +34,11 @@ install:
 before_script:
   - mysql -e 'create database travis_ci_db;'
   - python pos_tools_portal/manage.py makemigrations --noinput    # Fetch DB changes
-
-script:
   - python pos_tools_portal/manage.py migrate                     # Apply database migrations
   - python pos_tools_portal/manage.py collectstatic --noinput     # Collect static files
   - python pos_tools_portal/manage.py check
+  - python manage.py runserver &
+  - sleep 3 # give django server time to bind to sockets
+
+script:
   - python pos_tools_portal/manage.py test pos_tasks
