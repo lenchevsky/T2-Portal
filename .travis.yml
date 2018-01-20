@@ -10,21 +10,19 @@ python:
 
 dist: trusty
 addons:
-  chrome: stable
+  firefox: latest
 
 services: 
   - mysql
 
 env:
   - DJANGO=1.8.18 DB=mysql
+  - MOZ_HEADLESS=1
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=pos_tools_portal.settings
   - export PYTHONPATH=$HOME/builds/lenchevsky/t2-portal
   - export PIP_USE_MIRRORS=true
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
 
 install:
   - pip install -r ./tools/requirements.txt
@@ -32,9 +30,9 @@ install:
 
 before_script:
   - mysql -e 'create database travis_ci_db;'
+  - python pos_tools_portal/manage.py makemigrations --noinput    # Fetch DB changes
 
 script:
-  - python pos_tools_portal/manage.py makemigrations --noinput    # Fetch DB changes
   - python pos_tools_portal/manage.py migrate                     # Apply database migrations
   - python pos_tools_portal/manage.py collectstatic --noinput     # Collect static files
   - python pos_tools_portal/manage.py check
