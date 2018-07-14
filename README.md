@@ -3,4 +3,4 @@
 [![Build Status](https://travis-ci.org/lenchevsky/T2-Portal.svg?branch=open-source)](https://travis-ci.org/lenchevsky/T2-Portal)
 
 #### Important Links:
-http://snegirev.ml/projects/
+[ ] http://snegirev.ml/projects/
